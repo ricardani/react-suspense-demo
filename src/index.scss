@@ -1,0 +1,87 @@
+@import '~bootswatch/dist/superhero/bootstrap.min.css';
+
+$black: #000;
+$dark: #555;
+$light: #ddd;
+$white: #fff;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: $white;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1
+}
+
+.center {
+    text-align: center;
+}
+
+:root {
+    --color-debuggerBg: #f7f7f7;
+    --color-debuggerText: #333;
+    --color-debuggerBorder: #e7e7e7;
+
+    --color-panelBg: #f7f7f7;
+    --color-panelText: #333;
+
+    --color-pageTextDark: #000;
+    --color-pageText: #333;
+    --color-pageBg: #fff;
+
+    --color-buttonBg: #f7f7f7;
+    --color-buttonBorder: #e7e7e7;
+
+    --pt: 8px;
+}

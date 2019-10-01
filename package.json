@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootswatch": "^4.3.1",
+    "node-sass": "^4.12.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-draggable": "^4.0.3",
+    "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "cp ./patches/webpackDevServer.config.js ./node_modules/react-scripts/config/webpackDevServer.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
