@@ -1,8 +1,14 @@
-.burger-details {
-  .burger-image {
-    max-height: 200px;
-    max-width: 30%;
-    display: block;
-    margin: auto;
+.burger {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+
+  .burger-details {
+    .burger-image {
+      max-height: 200px;
+      max-width: 30%;
+      display: block;
+      margin: auto;
+    }
   }
 }

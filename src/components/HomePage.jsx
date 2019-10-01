@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import Spinner from './Spinner';
 import { fetchBurgerList } from '../api';
 
 import './home-page.scss';
 
 const HomePage = () => {
     const [burgerList, setBurgerList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetchBurgerList().then(setBurgerList);
+        setIsLoading(true);
+        fetchBurgerList()
+            .then(setBurgerList)
+            .finally(() => setIsLoading(false));
     }, []);
+
+    if (isLoading) {
+        return <Spinner />
+    }
 
     return (
         <div className='burger-list row'>

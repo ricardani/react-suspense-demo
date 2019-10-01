@@ -2,8 +2,10 @@ import React from 'react';
 
 import './spinner.scss';
 
-export const Spinner = () => {
+export default () => {
     return (
-        <div className="loader"></div>
+        <div className="spinner">
+            <div className="spinner__animation" />
+        </div>
     );
 };

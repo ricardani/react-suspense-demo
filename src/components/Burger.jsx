@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
+import Spinner from './Spinner';
 import { fetchBurgerComments, fetchBurgerDetails } from '../api';
 
 import './burger.scss';
 
 const BurgerDetails = ({ burgerId }) => {
     const [burgerDetail, setBurgerDetail] = useState({img: {}});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetchBurgerDetails(burgerId).then(setBurgerDetail)
+        setIsLoading(true);
+        fetchBurgerDetails(burgerId)
+            .then(setBurgerDetail)
+            .finally(() => setIsLoading(false));
     }, [burgerId]);
+
+    if (isLoading) {
+        return <Spinner />;
+    }
 
     return (
         <div className='burger-details jumbotron mb-0'>
@@ -31,17 +40,25 @@ const BurgerDetails = ({ burgerId }) => {
 
 const BurgerComments = ({ burgerId }) => {
     const [burgerComments, setBurgerComments] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetchBurgerComments(burgerId).then(setBurgerComments)
+        setIsLoading(true);
+        fetchBurgerComments(burgerId)
+            .then(setBurgerComments)
+            .finally(() => setIsLoading(false));
     }, [burgerId]);
+
+    if (isLoading) {
+        return <Spinner />;
+    }
 
     return (
         <div className='burger-comments row bg-dark'>
             {burgerComments.map(comment => (
-                <blockquote key={comment.id} className="blockquote text-center col-3">
-                    <p className="mb-0">{comment.message}</p>
-                    <footer className="blockquote-footer">{comment.author}</footer>
+                <blockquote key={comment.id} className='blockquote text-center col-3'>
+                    <p className='mb-0'>{comment.message}</p>
+                    <footer className='blockquote-footer'>{comment.author}</footer>
                 </blockquote>
             ))}
         </div>
@@ -52,10 +69,10 @@ const Burger = ({ match }) => {
     const burgerId = match.params.burgerId;
 
     return (
-        <>
-            <BurgerDetails burgerId={burgerId}/>
-            <BurgerComments burgerId={burgerId}/>
-        </>
+        <div className='burger'>
+            <BurgerDetails burgerId={burgerId} />
+            <BurgerComments burgerId={burgerId} />
+        </div>
     );
 };
 

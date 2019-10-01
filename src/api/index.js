@@ -49,6 +49,12 @@ const makeFakeAPICall = (url, result) => {
     });
 };
 
+export function slowImport(value) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(value), fakeRequestTime);
+    });
+}
+
 export const fetchBurgerList = () => {
     return makeFakeAPICall('/api/burgers', BURGERS(fakeRequestTime))
 };
