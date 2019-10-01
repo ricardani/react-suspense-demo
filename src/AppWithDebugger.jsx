@@ -65,13 +65,10 @@ export class AppWithDebugger extends PureComponent {
     }
 
     handleReset = () => {
-        // trace('Clear cache', () => {
-        // cache.invalidate();
         this.setState(state => ({
             requests: {},
         }));
         handleReset();
-        // });
     };
 
     handleProgress = (url, progress, isPaused) => {
