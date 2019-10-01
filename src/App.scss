@@ -1,4 +1,8 @@
 .App {
-  text-align: center;
-  height: 100vh;
+    text-align: center;
+    height: 100vh;
+
+    .navbar {
+        justify-content: space-between;
+    }
 }

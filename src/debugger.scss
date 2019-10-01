@@ -3,64 +3,64 @@
 /* -------------------------------- */
 
 #debugger {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99999;
-  /* width: 100vw; */
-  /* height: 100vh; */
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    pointer-events: none;
 }
 
 .🎛 {
-  position: fixed;
-  max-width: calc(var(--pt)*32);
-  border-radius: var(--pt);
-  padding: calc(var(--pt)*2);
-  background-color: var(--color-debuggerBg);
-  border: 1px solid var(--color-debuggerBorder);
-  border-radius: 0.5rem;
-  color: var(--color-debuggerText);
-  pointer-events: all;
+    position: fixed;
+    max-width: calc(var(--pt)*32);
+    border-radius: var(--pt);
+    padding: calc(var(--pt)*2);
+    background-color: var(--color-debuggerBg);
+    border: 1px solid var(--color-debuggerBorder);
+    border-radius: 0.5rem;
+    color: var(--color-debuggerText);
+    pointer-events: all;
 }
 
 .🕹 {
-  background-color: var(--color-buttonBg);
-  border: 1px solid var(--color-buttonBorder);
-  border-radius: var(--pt);
-  padding: 0;
-  width: calc(var(--pt)*5);
-  height: calc(var(--pt)*5);
-  font-size: calc(var(--pt)*3);
-  line-height: 1;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
+    background-color: var(--color-buttonBg);
+    border: 1px solid var(--color-buttonBorder);
+    border-radius: var(--pt);
+    padding: 0;
+    width: calc(var(--pt)*5);
+    height: calc(var(--pt)*5);
+    font-size: calc(var(--pt)*3);
+    line-height: 1;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
 }
 
 .🕹.👶 {
-  width: calc(var(--pt)*3);
-  height: calc(var(--pt)*3);
-  font-size: calc(var(--pt)*2);
+    width: calc(var(--pt)*3);
+    height: calc(var(--pt)*3);
+    font-size: calc(var(--pt)*2);
 }
 
 .🕹.🐘 {
-  width: auto;
-  height: calc(var(--pt)*7);
-  padding: var(--pt) calc(var(--pt)*2);
+    width: auto;
+    height: calc(var(--pt)*7);
+    padding: var(--pt) calc(var(--pt)*2);
 }
 
 .🕹:hover {
-  background-color: white;
-  top: -4px;
-  left: -4px;
-  box-shadow: 4px 4px 0 var(--color-buttonBorder);
+    background-color: white;
+    top: -4px;
+    left: -4px;
+    box-shadow: 4px 4px 0 var(--color-buttonBorder);
 }
 
 .🕹:active {
-  box-shadow: none;
-  top: 0;
-  left: 0;
+    box-shadow: none;
+    top: 0;
+    left: 0;
 }

@@ -8,7 +8,7 @@
  */
 
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
     (function() {
 
         Object.defineProperty(exports, '__esModule', { value: true });

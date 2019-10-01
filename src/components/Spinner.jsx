@@ -4,8 +4,8 @@ import './spinner.scss';
 
 export default () => {
     return (
-        <div className="spinner">
-            <div className="spinner__animation" />
+        <div className='spinner bg-dark'>
+            <div className='spinner__animation' />
         </div>
     );
 };
