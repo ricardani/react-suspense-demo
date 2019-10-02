@@ -6,7 +6,7 @@ import { fetchBurgerComments, fetchBurgerDetails } from '../api';
 import './burger.scss';
 
 const BurgerDetails = ({ burgerId }) => {
-    const [burgerDetails, setBurgerDetails] = useState({img:{}});
+    const [burgerDetails, setBurgerDetails] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const BurgerDetails = ({ burgerId }) => {
             <h1 className='display-3'>{burgerDetails.name}</h1>
             <p>{burgerDetails.rating}</p>
             <img className='burger-image'
-                 src={burgerDetails.img.high}
+                 src={burgerDetails.img && burgerDetails.img.high}
                  alt={burgerDetails.name}/>
             <p className='lead pt-2'>{burgerDetails.description}</p>
             <hr className='my-4'/>
