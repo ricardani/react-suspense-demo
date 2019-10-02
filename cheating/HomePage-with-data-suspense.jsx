@@ -9,26 +9,32 @@ import './home-page.scss';
 
 const BurgerListResource = unstable_createResource(fetchBurgerList);
 
-const HomePage = () => {
-    const burgerList = BurgerListResource.read();
+const BurgerList = () => {
+    return (
+        <>
+            {BurgerListResource.read().map(burger => (
+                <div key={burger.id} className='card pt-3 pb-3 col-3'>
+                    <h3 className='card-header'>{burger.name}</h3>
+                    <div className='card-body'>
+                        <h6 className='card-subtitle text-muted'>{burger.rating}</h6>
+                    </div>
+                    <img className='burger-image'
+                         src={burger.img.high}
+                         alt={burger.name}/>
+                    <Link className='card-footer text-muted mt-2' to={`/burger/${burger.id}`}>
+                        See More
+                    </Link>
+                </div>
+            ))}
+        </>
+    )
+};
 
+const HomePage = () => {
     return (
         <React.Suspense fallback={<Spinner />}>
             <div className='burger-list row'>
-                {burgerList.map(burger => (
-                    <div key={burger.id} className='card pt-3 pb-3 col-3'>
-                        <h3 className='card-header'>{burger.name}</h3>
-                        <div className='card-body'>
-                            <h6 className='card-subtitle text-muted'>{burger.rating}</h6>
-                        </div>
-                        <img className='burger-image'
-                             src={burger.img.high}
-                             alt={burger.name}/>
-                        <Link className='card-footer text-muted mt-2' to={`/burger/${burger.id}`}>
-                            See More
-                        </Link>
-                    </div>
-                ))}
+                <BurgerList/>
             </div>
         </React.Suspense>
     );

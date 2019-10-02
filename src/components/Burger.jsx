@@ -6,33 +6,33 @@ import { fetchBurgerComments, fetchBurgerDetails } from '../api';
 import './burger.scss';
 
 const BurgerDetails = ({ burgerId }) => {
-    const [burgerDetail, setBurgerDetail] = useState({img: {}});
+    const [burgerDetails, setBurgerDetails] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
         fetchBurgerDetails(burgerId)
-            .then(setBurgerDetail)
+            .then(setBurgerDetails)
             .finally(() => setIsLoading(false));
     }, [burgerId]);
 
-    if (isLoading) {
+    if (isLoading || !burgerDetails.id) {
         return <Spinner />;
     }
 
     return (
         <div className='burger-details jumbotron mb-0'>
-            <h1 className='display-3'>{burgerDetail.name}</h1>
-            <p>{burgerDetail.rating}</p>
+            <h1 className='display-3'>{burgerDetails.name}</h1>
+            <p>{burgerDetails.rating}</p>
             <img className='burger-image'
-                 src={burgerDetail.img.high}
-                 alt={burgerDetail.name}/>
-            <p className='lead pt-2'>{burgerDetail.description}</p>
+                 src={burgerDetails.img.high}
+                 alt={burgerDetails.name}/>
+            <p className='lead pt-2'>{burgerDetails.description}</p>
             <hr className='my-4'/>
             <div className='form-group row'>
-                <label className='col-sm-4 col-form-label'>Address: {burgerDetail.address}</label>
-                <label className='col-sm-4 col-form-label'>Phone: {burgerDetail.phone}</label>
-                <label className='col-sm-4 col-form-label'>Email: {burgerDetail.email}</label>
+                <label className='col-sm-4 col-form-label'>Address: {burgerDetails.address}</label>
+                <label className='col-sm-4 col-form-label'>Phone: {burgerDetails.phone}</label>
+                <label className='col-sm-4 col-form-label'>Email: {burgerDetails.email}</label>
             </div>
         </div>
     );

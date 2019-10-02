@@ -6,23 +6,9 @@ import { fetchBurgerList } from '../api';
 
 import './home-page.scss';
 
-const HomePage = () => {
-    const [burgerList, setBurgerList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchBurgerList()
-            .then(setBurgerList)
-            .finally(() => setIsLoading(false));
-    }, []);
-
-    if (isLoading) {
-        return <Spinner />
-    }
-
+const BurgerList = ({burgerList}) => {
     return (
-        <div className='burger-list row'>
+        <>
             {burgerList.map(burger => (
                 <div key={burger.id} className='card pt-3 pb-3 col-3'>
                     <h3 className='card-header'>{burger.name}</h3>
@@ -37,6 +23,28 @@ const HomePage = () => {
                     </Link>
                 </div>
             ))}
+        </>
+    );
+};
+
+const HomePage = () => {
+    const [burgerList, setBurgerList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        fetchBurgerList()
+            .then(setBurgerList)
+            .finally(() => setIsLoading(false));
+    }, []);
+
+    if (isLoading || !burgerList.length) {
+        return <Spinner />
+    }
+
+    return (
+        <div className='burger-list row'>
+            <BurgerList burgerList={burgerList} />
         </div>
     );
 };
