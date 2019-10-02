@@ -6,7 +6,7 @@ import { fetchBurgerComments, fetchBurgerDetails } from '../api';
 import './burger.scss';
 
 const BurgerDetails = ({ burgerId }) => {
-    const [burgerDetails, setBurgerDetails] = useState({});
+    const [burgerDetails, setBurgerDetails] = useState({img:{}});
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const BurgerDetails = ({ burgerId }) => {
             .finally(() => setIsLoading(false));
     }, [burgerId]);
 
-    if (isLoading || !burgerDetails.id) {
+    if (isLoading) {
         return <Spinner />;
     }
 

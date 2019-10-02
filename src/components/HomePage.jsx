@@ -38,7 +38,7 @@ const HomePage = () => {
             .finally(() => setIsLoading(false));
     }, []);
 
-    if (isLoading || !burgerList.length) {
+    if (isLoading) {
         return <Spinner />
     }
 
