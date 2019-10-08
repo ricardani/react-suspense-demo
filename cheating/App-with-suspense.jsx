@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import Spinner from './components/Spinner';
 import { slowImport } from './api';
 import { unstable_setGlobalCacheLimit } from './cache';
+import { useEventListener, setMouseClickAnimation } from './utils';
 
 import './App.scss';
 
@@ -13,6 +14,9 @@ const HomePage = React.lazy(() => slowImport(import('./components/HomePage')));
 
 function App() {
     unstable_setGlobalCacheLimit(0);
+
+    const mouseClickHandler = useCallback(setMouseClickAnimation, []);
+    useEventListener('click', mouseClickHandler);
 
     return (
         <div className='App bg-dark'>
