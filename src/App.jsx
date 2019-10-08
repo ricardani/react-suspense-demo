@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import About from './components/About';
 import Burger from './components/Burger';
 import HomePage from './components/HomePage';
 import { unstable_setGlobalCacheLimit } from './cache';
+import { useEventListener, setMouseClickAnimation } from './utils';
 
 import './App.scss';
 
-function App() {
+const App = () => {
     unstable_setGlobalCacheLimit(0);
+
+    const mouseClickHandler = useCallback(setMouseClickAnimation, []);
+    useEventListener('click', mouseClickHandler);
 
     return (
         <div className='App bg-dark'>
@@ -24,6 +28,6 @@ function App() {
             </Switch>
         </div>
     );
-}
+};
 
 export default App;
