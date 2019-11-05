@@ -8,9 +8,9 @@ import { useEventListener, setMouseClickAnimation } from './utils';
 
 import './App.scss';
 
-const About = React.lazy(() => slowImport(import('./components/About')));
-const Burger = React.lazy(() => slowImport(import('./components/Burger')));
-const HomePage = React.lazy(() => slowImport(import('./components/HomePage')));
+const About = React.lazy(() => slowImport(import(/* webpackChunkName: 'About' */ './components/About')));
+const Burger = React.lazy(() => slowImport(import(/* webpackChunkName: 'Burger' */ './components/Burger')));
+const HomePage = React.lazy(() => slowImport(import(/* webpackChunkName: 'HomePage' */ './components/HomePage')));
 
 function App() {
     unstable_setGlobalCacheLimit(0);

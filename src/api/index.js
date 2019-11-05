@@ -49,9 +49,9 @@ const makeFakeAPICall = (url, result) => {
     });
 };
 
-export function slowImport(value) {
+export function slowImport(value, timeout) {
     return new Promise(resolve => {
-        setTimeout(() => resolve(value), fakeRequestTime);
+        setTimeout(() => resolve(value), timeout || fakeRequestTime);
     });
 }
 
