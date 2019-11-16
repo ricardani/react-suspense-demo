@@ -1,4 +1,4 @@
-import { BURGERS, BURGERS_COMMENTS, BURGERS_DETAILS } from './data';
+import {BURGERS, BURGERS_COMMENTS, BURGERS_COMPLETE_LIST, BURGERS_DETAILS} from './data';
 
 let fakeRequestTime = 1000;
 let onProgress = () => true;
@@ -65,4 +65,8 @@ export const fetchBurgerDetails = id => {
 
 export const fetchBurgerComments = id =>{
     return makeFakeAPICall(`/api/burger-comments/${id}`, BURGERS_COMMENTS()[id])
+};
+
+export const fetchBurgersCompleteList = () =>{
+    return makeFakeAPICall('/api/burgers-complete-list', BURGERS_COMPLETE_LIST())
 };
