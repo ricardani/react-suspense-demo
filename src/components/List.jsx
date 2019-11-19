@@ -30,6 +30,31 @@ const getResultsSlow = (burgersList, searchTerm) => {
     });
 };
 
+const BurgerListTable = ({ searchResults }) => {
+    return (
+        <div className='burgers-list__table'>
+            <table className='table table-striped'>
+                <thead>
+                <tr>
+                    <th scope='col'>Id</th>
+                    <th scope='col'>Name</th>
+                    <th scope='col'>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {searchResults.map(burger => (
+                    <tr key={burger.id}>
+                        <td key={`${burger.id}-id`}>{burger.id}</td>
+                        <td key={`${burger.id}-name`}>{burger.name}</td>
+                        <td key={`${burger.id}-description`}>{burger.description}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
 const List = () => {
     const [burgersList, setBurgersList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -67,27 +92,7 @@ const List = () => {
                     onChange={handleChange}
                 />
             </div>
-
-            <div className='burgers-list__table'>
-                <table className='table table-striped'>
-                    <thead>
-                    <tr>
-                        <th scope='col'>Id</th>
-                        <th scope='col'>Name</th>
-                        <th scope='col'>Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {searchResults.map(burger => (
-                            <tr key={burger.id}>
-                                <td key={`${burger.id}-id`}>{burger.id}</td>
-                                <td key={`${burger.id}-name`}>{burger.name}</td>
-                                <td key={`${burger.id}-description`}>{burger.description}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <BurgerListTable searchResults={searchResults} />
         </div>
     );
 };
