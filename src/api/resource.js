@@ -10,9 +10,11 @@ const wrapPromise = fetchFunction => {
     let status;
     let result;
     let promise;
+    let key;
 
     const read = input => {
-        if (!promise) {
+        if (!promise || key !== input) {
+            key = input;
             status = STATUS_PENDING;
             promise = fetchFunction(input);
         }
