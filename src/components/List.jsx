@@ -79,10 +79,10 @@ const List = () => {
                     </thead>
                     <tbody>
                         {searchResults.map(burger => (
-                            <tr>
-                                <td>{burger.id}</td>
-                                <td>{burger.name}</td>
-                                <td>{burger.description}</td>
+                            <tr key={burger.id}>
+                                <td key={`${burger.id}-id`}>{burger.id}</td>
+                                <td key={`${burger.id}-name`}>{burger.name}</td>
+                                <td key={`${burger.id}-description`}>{burger.description}</td>
                             </tr>
                         ))}
                     </tbody>
