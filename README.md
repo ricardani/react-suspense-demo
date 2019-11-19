@@ -6,7 +6,7 @@ This project has the goal to test some Suspense and Concurrent Mode functionalit
 This project has a debugger module (shown in the image bellow). To show/hide this debugger press the `-` key.
 [Debugger from jaredpalmer/react-conf-2018](https://github.com/jaredpalmer/react-conf-2018/blob/master/before-suspense/src/Root.js)
 
-This debugger will also delay request to images that end with `-hd.jpg`.
+This debugger will also delay request for images that end with `-hd.jpg`.
 [Patch from jaredpalmer/react-conf-2018](https://github.com/jaredpalmer/react-conf-2018/blob/master/before-suspense/patches/webpackDevServer.config.js)
 
 <img alt="Debugger" src="./assets/debugger.png" width="200" height="200">
