@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useDeferredValue } from 'react';
 
 import Spinner from './Spinner';
 import { fetchBurgersCompleteList } from '../api';
@@ -32,8 +32,8 @@ const BurgerListTable = ({ searchTerm, burgersList }) => {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        setSearchResults(getResultsFast(burgersList, searchTerm));
-        // setSearchResults(getResultsSlow(burgersList, searchTerm));
+        // setSearchResults(getResultsFast(burgersList, searchTerm));
+        setSearchResults(getResultsSlow(burgersList, searchTerm));
     }, [burgersList, searchTerm]);
 
     return (
@@ -64,6 +64,7 @@ const List = () => {
     const [burgersList, setBurgersList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const deferredSearchTerm = useDeferredValue(searchTerm, { timeoutMs: 2000 });
 
     useEffect(() => {
         setIsLoading(true);
@@ -91,7 +92,7 @@ const List = () => {
                     onChange={handleChange}
                 />
             </div>
-            <BurgerListTable searchTerm={searchTerm} burgersList={burgersList} />
+            <BurgerListTable searchTerm={deferredSearchTerm} burgersList={burgersList} />
         </div>
     );
 };
