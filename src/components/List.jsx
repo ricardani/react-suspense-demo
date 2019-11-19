@@ -62,29 +62,6 @@ const BurgerListTable = ({ searchTerm, burgersList }) => {
     );
 };
 
-const SearchInput = ({ searchTerm, handleChange }) => {
-    return (
-        <div className='input-group mb-3 burgers-list__search'>
-            <input
-                type='text'
-                placeholder='Search'
-                className='form-control burgers-list__search-input'
-                value={searchTerm}
-                onChange={handleChange}
-            />
-        </div>
-    );
-};
-
-const SearchInList = ({ searchTerm, handleChange, burgersList }) => {
-    return (
-        <>
-            <SearchInput searchTerm={searchTerm} handleChange={handleChange} />
-            <BurgerListTable searchTerm={searchTerm} burgersList={burgersList}/>
-        </>
-    );
-};
-
 const List = () => {
     const [burgersList, setBurgersList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -107,10 +84,16 @@ const List = () => {
 
     return (
         <div className='burgers-list'>
-            <SearchInList
-                searchTerm={searchTerm}
-                handleChange={handleChange}
-                burgersList={burgersList} />
+            <div className='input-group mb-3 burgers-list__search'>
+                <input
+                    type='text'
+                    placeholder='Search'
+                    className='form-control burgers-list__search-input'
+                    value={searchTerm}
+                    onChange={handleChange}
+                />
+            </div>
+            <BurgerListTable searchTerm={searchTerm} burgersList={burgersList} />
         </div>
     );
 };
