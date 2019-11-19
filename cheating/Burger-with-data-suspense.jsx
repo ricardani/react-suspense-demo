@@ -1,13 +1,12 @@
 import React from 'react';
 
 import Spinner from './Spinner';
-import { fetchBurgerComments, fetchBurgerDetails } from '../api';
-import { unstable_createResource } from '../cache';
+import { createResource, fetchBurgerComments, fetchBurgerDetails } from '../api';
 
 import './burger.scss';
 
-const BurgerCommentsResource = unstable_createResource(fetchBurgerComments);
-const BurgerDetailsResource = unstable_createResource(fetchBurgerDetails);
+const BurgerCommentsResource = createResource(fetchBurgerComments);
+const BurgerDetailsResource = createResource(fetchBurgerDetails);
 
 const BurgerDetails = ({ burgerId }) => {
     const burgerDetails = BurgerDetailsResource.read(burgerId);

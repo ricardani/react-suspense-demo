@@ -1,14 +1,13 @@
 import React from 'react';
 
 import Spinner from './Spinner';
-import { fetchBurgerComments, fetchBurgerDetails } from '../api';
-import { unstable_createResource } from '../cache';
+import { createResource, fetchBurgerComments, fetchBurgerDetails } from '../api';
 
 import './burger.scss';
 
-const BurgerCommentsResource = unstable_createResource(fetchBurgerComments);
-const BurgerDetailsResource = unstable_createResource(fetchBurgerDetails);
-const ImageResource = unstable_createResource(
+const BurgerCommentsResource = createResource(fetchBurgerComments);
+const BurgerDetailsResource = createResource(fetchBurgerDetails);
+const ImageResource = createResource(
     source => new Promise(
         resolve => {
             const img = new Image();

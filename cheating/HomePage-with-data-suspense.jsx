@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Spinner from './Spinner';
-import { fetchBurgerList } from '../api';
-import { unstable_createResource } from '../cache';
+import { createResource, fetchBurgerList } from '../api';
 
 import './home-page.scss';
 
-const BurgerListResource = unstable_createResource(fetchBurgerList);
+const BurgerListResource = createResource(fetchBurgerList);
 
 const BurgerList = () => {
     return (

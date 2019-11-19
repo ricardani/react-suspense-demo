@@ -3,7 +3,6 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import Spinner from './components/Spinner';
 import { slowImport } from './api';
-import { unstable_setGlobalCacheLimit } from './cache';
 import { useEventListener, setMouseClickAnimation } from './utils';
 
 import './App.scss';
@@ -12,9 +11,7 @@ const About = React.lazy(() => slowImport(import(/* webpackChunkName: 'About' */
 const Burger = React.lazy(() => slowImport(import(/* webpackChunkName: 'Burger' */ './components/Burger')));
 const HomePage = React.lazy(() => slowImport(import(/* webpackChunkName: 'HomePage' */ './components/HomePage')));
 
-function App() {
-    unstable_setGlobalCacheLimit(0);
-
+const App = () => {
     const mouseClickHandler = useCallback(setMouseClickAnimation, []);
     useEventListener('click', mouseClickHandler);
 
@@ -33,6 +30,6 @@ function App() {
             </React.Suspense>
         </div>
     );
-}
+};
 
 export default App;
