@@ -35,6 +35,7 @@ const wrapPromise = fetchFunction => {
         } else if (status === STATUS_ERROR) {
             throw result;
         } else if (status === STATUS_SUCCESS) {
+            // Comment this line when using concurrent mode features
             promise = null;
             return result;
         }

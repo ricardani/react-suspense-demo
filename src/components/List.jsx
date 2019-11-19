@@ -57,24 +57,24 @@ const List = () => {
     }
 
     return (
-        <div className="burgers-list">
-            <div className="input-group mb-3 burgers-list__search">
+        <div className='burgers-list'>
+            <div className='input-group mb-3 burgers-list__search'>
                 <input
-                    type="text"
-                    placeholder="Search"
-                    className="form-control burgers-list__search-input"
+                    type='text'
+                    placeholder='Search'
+                    className='form-control burgers-list__search-input'
                     value={searchTerm}
                     onChange={handleChange}
                 />
             </div>
 
-            <div className="burgers-list__table">
-                <table className="table table-striped">
+            <div className='burgers-list__table'>
+                <table className='table table-striped'>
                     <thead>
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
+                        <th scope='col'>Id</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Description</th>
                     </tr>
                     </thead>
                     <tbody>

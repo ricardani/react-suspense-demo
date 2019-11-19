@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useTransition, useState } from 'react';
 
 import Spinner from './Spinner';
 import { createResource, fetchBurgerComments, fetchBurgerDetails } from '../api';
@@ -32,15 +32,34 @@ const BurgerDetails = ({ burgerId }) => {
 };
 
 const BurgerComments = ({ burgerId }) => {
+    const [startTransition, isPending] = useTransition({ timeoutMs: 1000 });
+    const [resource, setResource] = useState(BurgerCommentsResource);
+
+    const handleRefreshClick = () => {
+        startTransition(() => {
+            setResource(createResource(fetchBurgerComments));
+        });
+    };
+
     return (
-        <div className='burger-comments row bg-dark'>
-            {BurgerCommentsResource.read(burgerId).map(comment => (
-                <blockquote key={comment.id} className='blockquote text-center col-3'>
-                    <p className='mb-0'>{comment.message}</p>
-                    <footer className='blockquote-footer'>{comment.author}</footer>
-                </blockquote>
-            ))}
-        </div>
+        <>
+            <div>
+                <button
+                    onClick={handleRefreshClick}
+                    disabled={isPending}
+                >
+                    {isPending ? 'Refreshing...' : 'Refresh'}
+                </button>
+            </div>
+            <div className='burger-comments row bg-dark'>
+                {resource.read(burgerId).map(comment => (
+                    <blockquote key={comment.id} className='blockquote text-center col-3'>
+                        <p className='mb-0'>{comment.message}</p>
+                        <footer className='blockquote-footer'>{comment.author}</footer>
+                    </blockquote>
+                ))}
+            </div>
+        </>
     );
 };
 
@@ -48,16 +67,14 @@ const Burger = ({ match }) => {
     const burgerId = match.params.burgerId;
 
     return (
-        <div className='burger'>
-            <React.SuspenseList revealOrder='forwards' tail='hidden'>
-                <React.Suspense fallback={<Spinner />}>
-                    <BurgerDetails burgerId={burgerId} />
-                </React.Suspense>
+        <React.Suspense fallback={<Spinner />}>
+            <div className='burger'>
+                <BurgerDetails burgerId={burgerId} />
                 <React.Suspense fallback={<Spinner />}>
                     <BurgerComments burgerId={burgerId} />
                 </React.Suspense>
-            </React.SuspenseList>
-        </div>
+            </div>
+        </React.Suspense>
     );
 };
 
