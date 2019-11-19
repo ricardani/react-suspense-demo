@@ -1,0 +1,15 @@
+.burgers-list {
+    .burgers-list__search {
+        width: 80vw;
+        margin: 15px auto;
+
+        .burgers-list__search-input {
+            border-radius: 5px;
+        }
+    }
+
+    .burgers-list__table {
+        height: 80vh;
+        overflow-y: auto;
+    }
+}

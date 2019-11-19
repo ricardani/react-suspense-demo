@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Spinner from './Spinner';
-import { fetchBurgerComments, fetchBurgerDetails } from '../api';
+import { createResource, fetchBurgerComments, fetchBurgerDetails } from '../api';
 
 import './burger.scss';
 
+const BurgerCommentsResource = createResource(fetchBurgerComments);
+const BurgerDetailsResource = createResource(fetchBurgerDetails);
+
 const BurgerDetails = ({ burgerId }) => {
-    const [burgerDetails, setBurgerDetails] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchBurgerDetails(burgerId)
-            .then(setBurgerDetails)
-            .finally(() => setIsLoading(false));
-    }, [burgerId]);
-
-    if (isLoading) {
-        return <Spinner />;
-    }
+    const burgerDetails = BurgerDetailsResource.read(burgerId);
 
     return (
         <div className='burger-details jumbotron mb-0'>
@@ -41,23 +32,9 @@ const BurgerDetails = ({ burgerId }) => {
 };
 
 const BurgerComments = ({ burgerId }) => {
-    const [burgerComments, setBurgerComments] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchBurgerComments(burgerId)
-            .then(setBurgerComments)
-            .finally(() => setIsLoading(false));
-    }, [burgerId]);
-
-    if (isLoading) {
-        return <Spinner />;
-    }
-
     return (
         <div className='burger-comments row bg-dark'>
-            {burgerComments.map(comment => (
+            {BurgerCommentsResource.read(burgerId).map(comment => (
                 <blockquote key={comment.id} className='blockquote text-center col-3'>
                     <p className='mb-0'>{comment.message}</p>
                     <footer className='blockquote-footer'>{comment.author}</footer>
@@ -72,8 +49,14 @@ const Burger = ({ match }) => {
 
     return (
         <div className='burger'>
-            <BurgerDetails burgerId={burgerId} />
-            <BurgerComments burgerId={burgerId} />
+            <React.SuspenseList revealOrder='forwards' tail='hidden'>
+                <React.Suspense fallback={<Spinner />}>
+                    <BurgerDetails burgerId={burgerId} />
+                </React.Suspense>
+                <React.Suspense fallback={<Spinner />}>
+                    <BurgerComments burgerId={burgerId} />
+                </React.Suspense>
+            </React.SuspenseList>
         </div>
     );
 };

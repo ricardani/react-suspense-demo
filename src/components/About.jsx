@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './about.scss';
+
 const About = () => {
     return (
-        <div className='jumbotron'>
+        <div className='about jumbotron'>
             <h1 className='display-3'>About us!</h1>
             <p className='lead'>
                 Epic cheeseburgers come in all kinds of manifestations, but we want them in and around our mouth no matter what. Slide those smashed patties with the gently caramelized meat fat between a toasted brioche bun and pass it over. You fall in love with the cheeseburger itself but the journey ain’t half bad either.

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Spinner from './Spinner';
+import ErrorBoundary from './ErrorBoundary';
 import { fetchBurgerComments, fetchBurgerDetails } from '../api';
 
 import './burger.scss';
@@ -44,6 +45,8 @@ const BurgerComments = ({ burgerId }) => {
     const [burgerComments, setBurgerComments] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    throw 'Random error';
+
     useEffect(() => {
         setIsLoading(true);
         fetchBurgerComments(burgerId)
@@ -72,8 +75,12 @@ const Burger = ({ match }) => {
 
     return (
         <div className='burger'>
-            <BurgerDetails burgerId={burgerId} />
-            <BurgerComments burgerId={burgerId} />
+            <ErrorBoundary>
+                <BurgerDetails burgerId={burgerId} />
+                <ErrorBoundary>
+                    <BurgerComments burgerId={burgerId} />
+                </ErrorBoundary>
+            </ErrorBoundary>
         </div>
     );
 };

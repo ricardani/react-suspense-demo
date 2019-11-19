@@ -7,10 +7,12 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
 
-ReactDOM.render(
+ReactDOM.createRoot(
+    document.getElementById('root')
+).render(
     <Router basename={'/'}>
         <App />
-    </Router>,
-    document.getElementById('root'));
+    </Router>
+);
 
 serviceWorker.unregister();

@@ -1,63 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Suspense Demo
+This project has the goal to test some Suspense and Concurrent Mode functionalities.
 
-## Available Scripts
+## Debugger
 
-In the project directory, you can run:
+This project has a debugger module (shown in the image bellow). To show/hide this debugger press the `-` key.
+[Debugger from jaredpalmer/react-conf-2018](https://github.com/jaredpalmer/react-conf-2018/blob/master/before-suspense/src/Root.js)
 
-### `npm start`
+This debugger will also delay request for images that end with `-hd.jpg`.
+[Patch from jaredpalmer/react-conf-2018](https://github.com/jaredpalmer/react-conf-2018/blob/master/before-suspense/patches/webpackDevServer.config.js)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img alt="Debugger" src="./assets/debugger.png" width="200" height="200">
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Cheating Folder
 
-### `npm run build`
+In this project there is a `cheating` folder that has every experiment that was done.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Initial Run
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To run this project in your machine please run the following commands:
+`npm ci` and `npm start`
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Youtube Videos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Concurrent Rendering in React - Andrew Clark and Brian Vaughn - React Conf 2018](https://youtu.be/ByBPyMBTzM0)
 
-### Code Splitting
+[Suspense! - Dan Abramov - ReactFest](https://youtu.be/6g3g0Q_XVb4)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[Moving To React Suspense - Jared Palmer - React Conf 2018](https://youtu.be/SCQgE4mTnjU)
 
-### Analyzing the Bundle Size
+[Overview of React Concurrent Mode - Harry Wolff](https://youtu.be/8_ZjNnUqarg)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+[How does React Suspense Work? - Harry Wolff](https://youtu.be/onrMjAGY4qA)
 
-### Making a Progressive Web App
+### React Documentation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[Strict Mode](https://reactjs.org/docs/strict-mode.html)
 
-### Advanced Configuration
+[Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+[Code-Splitting](https://reactjs.org/docs/code-splitting.html)
 
-### Deployment
+[Suspense for Data Fetching](https://reactjs.org/docs/concurrent-mode-suspense.html)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+[Introducing Concurrent Mode](https://reactjs.org/docs/concurrent-mode-intro.html)
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Concurrent Mode API Reference](https://reactjs.org/docs/concurrent-mode-reference.html)

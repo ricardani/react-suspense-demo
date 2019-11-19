@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Spinner from './Spinner';
-import { fetchBurgerList } from '../api';
+import { createResource, fetchBurgerList } from '../api';
 
 import './home-page.scss';
 
-const BurgerList = ({burgerList}) => {
+const BurgerListResource = createResource(fetchBurgerList);
+
+const BurgerList = () => {
     return (
         <>
-            {burgerList.map(burger => (
+            {BurgerListResource.read().map(burger => (
                 <div key={burger.id} className='card pt-3 pb-3 col-3'>
                     <h3 className='card-header'>{burger.name}</h3>
                     <div className='card-body'>
@@ -24,28 +26,16 @@ const BurgerList = ({burgerList}) => {
                 </div>
             ))}
         </>
-    );
+    )
 };
 
 const HomePage = () => {
-    const [burgerList, setBurgerList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchBurgerList()
-            .then(setBurgerList)
-            .finally(() => setIsLoading(false));
-    }, []);
-
-    if (isLoading) {
-        return <Spinner />
-    }
-
     return (
-        <div className='burger-list row'>
-            <BurgerList burgerList={burgerList} />
-        </div>
+        <React.Suspense fallback={<Spinner />}>
+            <div className='burger-list row'>
+                <BurgerList/>
+            </div>
+        </React.Suspense>
     );
 };
 
