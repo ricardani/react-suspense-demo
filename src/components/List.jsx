@@ -30,7 +30,14 @@ const getResultsSlow = (burgersList, searchTerm) => {
     });
 };
 
-const BurgerListTable = ({ searchResults }) => {
+const BurgerListTable = ({ searchTerm, burgersList }) => {
+    const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        setSearchResults(getResultsFast(burgersList, searchTerm));
+        // setSearchResults(getResultsSlow(burgersList, searchTerm));
+    }, [burgersList, searchTerm]);
+
     return (
         <div className='burgers-list__table'>
             <table className='table table-striped'>
@@ -59,7 +66,6 @@ const List = () => {
     const [burgersList, setBurgersList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -71,11 +77,6 @@ const List = () => {
     const handleChange = event => {
         setSearchTerm(event.target.value);
     };
-
-    useEffect(() => {
-        setSearchResults(getResultsFast(burgersList, searchTerm));
-        // setSearchResults(getResultsSlow(burgersList, searchTerm));
-    }, [burgersList, searchTerm]);
 
     if (isLoading) {
         return <Spinner />;
@@ -92,7 +93,7 @@ const List = () => {
                     onChange={handleChange}
                 />
             </div>
-            <BurgerListTable searchResults={searchResults} />
+            <BurgerListTable searchTerm={searchTerm} burgersList={burgersList} />
         </div>
     );
 };
